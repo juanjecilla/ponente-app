@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "Ponente",
+    "tagline": "Encuentra ponentes que pueden viajar a tu ciudad."
+  },
+  "nav": {
+    "directory": "Directorio",
+    "login": "Iniciar sesión",
+    "editProfile": "Editar perfil"
+  }
+}
