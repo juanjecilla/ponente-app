@@ -1,0 +1,19 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+        threshold: 1%
+comment:
+  layout: 'reach, diff, flags, files'
+  behavior: default
+  require_changes: false
+ignore:
+  - 'src/main.tsx'
+  - 'src/vite-env.d.ts'
+  - '**/*.d.ts'
+  - 'scripts/**'
