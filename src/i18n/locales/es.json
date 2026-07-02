@@ -19,5 +19,10 @@
   "pages": {
     "profileEdit": "Edita tu perfil",
     "speaker": "Perfil del ponente"
+  },
+  "error": {
+    "title": "Algo ha salido mal",
+    "message": "Se ha producido un error inesperado. Nuestro equipo ha sido notificado. Inténtalo de nuevo.",
+    "reload": "Recargar página"
   }
 }

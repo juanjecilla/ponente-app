@@ -19,5 +19,10 @@
   "pages": {
     "profileEdit": "Edit your profile",
     "speaker": "Speaker profile"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "An unexpected error occurred. Our team has been notified. Please try again.",
+    "reload": "Reload page"
   }
 }
