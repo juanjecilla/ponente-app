@@ -11,17 +11,27 @@ on:
 permissions:
   contents: read
   security-events: write
+  # Required by CodeQL to read the workflow files it analyses.
+  actions: read
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: javascript-typescript
+          # No compilation needed for JS/TS — analyse the source directly.
+          build-mode: none
           queries: security-and-quality
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3

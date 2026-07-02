@@ -1,0 +1,36 @@
+# Reviews dependency changes introduced by a PR and fails the check when a newly
+# added/updated dependency ships a high-severity vulnerability or a disallowed
+# license. This only inspects the PR diff (not the whole existing tree), so it
+# complements Dependabot (known CVEs) and Socket.dev (supply-chain behaviour)
+# without re-flagging pre-existing dependencies.
+name: Dependency Review
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  # Allows the action to post the review summary as a PR comment.
+  pull-requests: write
+
+concurrency:
+  group: dependency-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # Block PRs that introduce high (or critical) severity vulnerabilities.
+          fail-on-severity: high
+          # Reject strong copyleft licenses on newly introduced dependencies.
+          # Applies only to the PR diff, so existing deps are never re-scanned.
+          deny-licenses: GPL-2.0, GPL-3.0, AGPL-3.0, LGPL-2.0, LGPL-3.0
+          comment-summary-in-pr: on-failure
