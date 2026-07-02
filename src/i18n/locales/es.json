@@ -8,6 +8,18 @@
     "login": "Iniciar sesión",
     "editProfile": "Editar perfil"
   },
+  "auth": {
+    "loading": "Cargando…"
+  },
+  "login": {
+    "title": "Inicia sesión en Ponente",
+    "subtitle": "Inicia sesión con Google para crear y gestionar tu perfil de ponente.",
+    "google": "Iniciar sesión con Google"
+  },
+  "pages": {
+    "profileEdit": "Edita tu perfil",
+    "speaker": "Perfil del ponente"
+  },
   "error": {
     "title": "Algo ha salido mal",
     "message": "Se ha producido un error inesperado. Nuestro equipo ha sido notificado. Inténtalo de nuevo.",

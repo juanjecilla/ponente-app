@@ -8,6 +8,18 @@
     "login": "Sign in",
     "editProfile": "Edit profile"
   },
+  "auth": {
+    "loading": "Loading…"
+  },
+  "login": {
+    "title": "Sign in to Ponente",
+    "subtitle": "Sign in with Google to create and manage your speaker profile.",
+    "google": "Sign in with Google"
+  },
+  "pages": {
+    "profileEdit": "Edit your profile",
+    "speaker": "Speaker profile"
+  },
   "error": {
     "title": "Something went wrong",
     "message": "An unexpected error occurred. Our team has been notified. Please try again.",

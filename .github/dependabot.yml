@@ -9,6 +9,15 @@ updates:
       - dependencies
     commit-message:
       prefix: 'chore(deps)'
+    # Group minor/patch bumps into a single PR to reduce review + CI-minute churn.
+    # Security updates are deliberately excluded from grouping so they surface
+    # individually and can be merged fast.
+    groups:
+      npm-minor-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
 
   - package-ecosystem: github-actions
     directory: '/'
@@ -19,3 +28,9 @@ updates:
       - github-actions
     commit-message:
       prefix: 'chore(ci)'
+    groups:
+      github-actions:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
