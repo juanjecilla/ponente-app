@@ -42,5 +42,17 @@
     "cancel": "Cancelar",
     "added": "Ciudades añadidas",
     "remove": "Eliminar {{name}}"
+  },
+  "topics": {
+    "legend": "Temas sobre los que hablas",
+    "loading": "Cargando temas…",
+    "error": "No se pudieron cargar los temas. Inténtalo de nuevo.",
+    "empty": "Todavía no hay temas disponibles.",
+    "requestLabel": "¿No encuentras tu tema? Solicítalo",
+    "requestPlaceholder": "p. ej. Kotlin Multiplatform",
+    "requestButton": "Solicitar",
+    "requestSignedOut": "Inicia sesión para solicitar un tema nuevo.",
+    "requestSubmitted": "Enviado para revisión. ¡Gracias!",
+    "requestError": "No se pudo enviar tu solicitud. Inténtalo de nuevo."
   }
 }

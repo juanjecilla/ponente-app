@@ -42,5 +42,17 @@
     "cancel": "Cancel",
     "added": "Added cities",
     "remove": "Remove {{name}}"
+  },
+  "topics": {
+    "legend": "Topics you speak about",
+    "loading": "Loading topics…",
+    "error": "Couldn't load topics. Please try again.",
+    "empty": "No topics are available yet.",
+    "requestLabel": "Can't find your topic? Request it",
+    "requestPlaceholder": "e.g. Kotlin Multiplatform",
+    "requestButton": "Request it",
+    "requestSignedOut": "Sign in to request a new topic.",
+    "requestSubmitted": "Submitted for review — thanks!",
+    "requestError": "Couldn't submit your request. Please try again."
   }
 }
