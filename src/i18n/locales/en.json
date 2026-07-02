@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "Ponente",
+    "tagline": "Find speakers who can travel to your city."
+  },
+  "nav": {
+    "directory": "Directory",
+    "login": "Sign in",
+    "editProfile": "Edit profile"
+  }
+}
