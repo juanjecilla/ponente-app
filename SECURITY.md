@@ -44,5 +44,20 @@ free-tier quota exhaustion is a known constraint, not a vulnerability.
 
 - Firebase **App Check** (reCAPTCHA v3) on Firestore
 - Firestore **security rules** enforce ownership, the publish gate, and admin-field locks
-- **CodeQL** + ESLint security plugins (SAST) and **Socket.dev** (supply-chain) on every PR
+- **CodeQL** + ESLint security plugins (`eslint-plugin-security`, `eslint-plugin-no-secrets`) for SAST on every PR
+- **Dependabot** — weekly grouped npm + GitHub Actions update PRs (known CVEs)
+- **Dependency Review** — blocks PRs that introduce high-severity vulnerabilities or disallowed (strong-copyleft) licenses in newly added dependencies
+- **Socket.dev** (supply-chain / malicious-package behaviour) commenting on dependency PRs
 - Secret scanning + push protection on the repository
+
+These four scanners are complementary, not redundant: Dependabot + Dependency
+Review cover known CVEs, Socket.dev covers supply-chain behaviour, and
+CodeQL + ESLint cover source-level (SAST) issues. See ADR 0001.
+
+## Secrets vs. public identifiers
+
+- **Firebase web API keys are public identifiers, not secrets.** Committing an
+  empty `.env.example` is fine; real values live in CI variables / `.env.local`.
+  If push protection flags a Firebase config pattern, it is a false positive.
+- **Firebase service-account JSON _is_ secret** and must never be committed — it
+  lives only in GitHub Actions secrets.
