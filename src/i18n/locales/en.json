@@ -42,5 +42,18 @@
     "cancel": "Cancel",
     "added": "Added cities",
     "remove": "Remove {{name}}"
+  },
+  "photo": {
+    "label": "Profile photo",
+    "choose": "Choose a photo",
+    "change": "Change photo",
+    "remove": "Remove photo",
+    "uploading": "Uploading…",
+    "hint": "JPEG, PNG or WebP, up to 2 MB.",
+    "previewAlt": "Profile photo preview",
+    "errorType": "Please choose a JPEG, PNG or WebP image.",
+    "errorSize": "That image is too large. Please choose one under 2 MB.",
+    "errorUpload": "Upload failed. Please try again.",
+    "errorNoUser": "You must be signed in to upload a photo."
   }
 }
