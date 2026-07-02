@@ -7,5 +7,23 @@
     "directory": "Directory",
     "login": "Sign in",
     "editProfile": "Edit profile"
+  },
+  "city": {
+    "searchLabel": "City",
+    "searchPlaceholder": "Search for a city…",
+    "loading": "Searching…",
+    "resultsCount_one": "{{count}} result",
+    "resultsCount_other": "{{count}} results",
+    "offlineNotice": "Showing offline results — live search is unavailable.",
+    "tierLabel": "Cost tier",
+    "tier": {
+      "free": "Free — I cover everything",
+      "self-covered": "Self-covered — I may need a little help",
+      "needs-expenses": "Needs expenses — travel + accommodation covered"
+    },
+    "add": "Add city",
+    "cancel": "Cancel",
+    "added": "Added cities",
+    "remove": "Remove {{name}}"
   }
 }
