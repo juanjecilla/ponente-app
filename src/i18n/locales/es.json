@@ -42,5 +42,25 @@
     "cancel": "Cancelar",
     "added": "Ciudades añadidas",
     "remove": "Eliminar {{name}}"
+  },
+  "report": {
+    "button": "Denunciar",
+    "title": "Denunciar este perfil",
+    "titleNamed": "Denunciar a {{name}}",
+    "description": "Cuéntanos qué ocurre. Un administrador revisará tu denuncia.",
+    "reasonLegend": "Motivo",
+    "reason": {
+      "spam": "Spam o publicidad",
+      "fake": "Perfil falso o suplantación",
+      "inappropriate": "Contenido inapropiado",
+      "wrong-info": "Información incorrecta"
+    },
+    "commentLabel": "Detalles adicionales (opcional)",
+    "commentPlaceholder": "Añade cualquier contexto que ayude a revisarlo…",
+    "reasonRequired": "Elige un motivo.",
+    "submit": "Enviar denuncia",
+    "submitting": "Enviando…",
+    "cancel": "Cancelar",
+    "error": "Algo ha salido mal. Inténtalo de nuevo."
   }
 }
