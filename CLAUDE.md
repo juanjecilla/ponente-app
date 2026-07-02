@@ -18,15 +18,15 @@ Hosting, Remote Config, Analytics, Performance, App Check) · Supabase Storage
 
 ## npm scripts
 
-| Script | Purpose |
-|--------|---------|
-| `npm run dev` | Vite dev server |
-| `npm run build` | `tsc -b` + `vite build` |
-| `npm run typecheck` | `tsc --noEmit` (strict) |
-| `npm run lint` | ESLint (+ security, jsx-a11y, no-secrets) |
-| `npm run format` / `format:check` | Prettier |
-| `npm run test` / `test:coverage` | Vitest (80% thresholds) |
-| `npm run size` | size-limit (300 kB gzip budget) |
+| Script                            | Purpose                                   |
+| --------------------------------- | ----------------------------------------- |
+| `npm run dev`                     | Vite dev server                           |
+| `npm run build`                   | `tsc -b` + `vite build`                   |
+| `npm run typecheck`               | `tsc --noEmit` (strict)                   |
+| `npm run lint`                    | ESLint (+ security, jsx-a11y, no-secrets) |
+| `npm run format` / `format:check` | Prettier                                  |
+| `npm run test` / `test:coverage`  | Vitest (80% thresholds)                   |
+| `npm run size`                    | size-limit (300 kB gzip budget)           |
 
 ## Project structure
 

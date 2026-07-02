@@ -11,7 +11,10 @@ void i18n
     resources: { en: { translation: en }, es: { translation: es } },
     fallbackLng: 'en',
     supportedLngs: ['en', 'es'],
-    detection: { order: ['localStorage', 'navigator'], caches: ['localStorage'] },
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     interpolation: { escapeValue: false },
   });
 

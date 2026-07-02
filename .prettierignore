@@ -1,0 +1,10 @@
+dist
+coverage
+node_modules
+package-lock.json
+public/data
+*.min.js
+
+# Spec docs have intentional formatting (tables, code samples) — don't reflow
+docs
+CONTEXT.md
