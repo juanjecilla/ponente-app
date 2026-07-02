@@ -24,12 +24,12 @@ npm run dev
 
 ## Scripts
 
-| Script | What it does |
-|--------|--------------|
-| `npm run dev` | Vite dev server |
-| `npm run build` | Type-check (`tsc -b`) then production build |
-| `npm run typecheck` | `tsc --noEmit` under strict mode |
-| `npm run preview` | Preview the production build |
+| Script              | What it does                                |
+| ------------------- | ------------------------------------------- |
+| `npm run dev`       | Vite dev server                             |
+| `npm run build`     | Type-check (`tsc -b`) then production build |
+| `npm run typecheck` | `tsc --noEmit` under strict mode            |
+| `npm run preview`   | Preview the production build                |
 
 Quality gates (lint, format, test, coverage, size-limit) and CI arrive with the
 tooling PR (task 00).
