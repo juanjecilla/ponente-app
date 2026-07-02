@@ -43,6 +43,26 @@
     "added": "Added cities",
     "remove": "Remove {{name}}"
   },
+  "report": {
+    "button": "Report",
+    "title": "Report this profile",
+    "titleNamed": "Report {{name}}",
+    "description": "Let us know what's wrong. An admin will review your report.",
+    "reasonLegend": "Reason",
+    "reason": {
+      "spam": "Spam or advertising",
+      "fake": "Fake profile or impersonation",
+      "inappropriate": "Inappropriate content",
+      "wrong-info": "Incorrect information"
+    },
+    "commentLabel": "Additional details (optional)",
+    "commentPlaceholder": "Add any context that helps an admin review this…",
+    "reasonRequired": "Please choose a reason.",
+    "submit": "Submit report",
+    "submitting": "Submitting…",
+    "cancel": "Cancel",
+    "error": "Something went wrong. Please try again."
+  },
   "topics": {
     "legend": "Topics you speak about",
     "loading": "Loading topics…",
