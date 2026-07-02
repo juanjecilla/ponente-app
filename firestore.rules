@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner(uid) { return request.auth != null && request.auth.uid == uid; }
+
+    // Required fields present for a published profile
+    function publishReady(d) {
+      return d.name is string && d.name.size() > 0
+          && d.topics is list && d.topics.size() > 0
+          && d.cities is list && d.cities.size() > 0
+          && d.contactLinks is list && d.contactLinks.size() > 0;
+    }
+
+    // Client must never touch admin-only fields
+    function adminFieldsUnchanged() {
+      return request.resource.data.disabled == resource.data.disabled
+          && request.resource.data.gdeVerified == resource.data.gdeVerified
+          && request.resource.data.get('reportCount', 0) == resource.data.get('reportCount', 0);
+    }
+
+    match /speakers/{uid} {
+      // Public: only published, non-disabled
+      allow read: if resource.data.published == true && resource.data.disabled == false;
+      // Owner reads own (even if unpublished/disabled)
+      allow read: if isOwner(uid);
+
+      // Create: owner only, admin fields locked to safe defaults, no premature publish
+      allow create: if isOwner(uid)
+                    && request.resource.data.disabled == false
+                    && request.resource.data.gdeVerified == false
+                    && (request.resource.data.published == false || publishReady(request.resource.data));
+
+      // Update: owner only, admin fields untouched, publish gate enforced
+      allow update: if isOwner(uid)
+                    && adminFieldsUnchanged()
+                    && (request.resource.data.published == false || publishReady(request.resource.data));
+    }
+
+    match /tags/{slug} {
+      allow read: if true;          // public
+      allow write: if false;        // admin/seed via console or Admin SDK
+    }
+
+    match /tag_requests/{id} {
+      allow create: if request.auth != null
+                    && request.resource.data.requestedBy == request.auth.uid;
+      allow read, update, delete: if false;   // admin via console
+    }
+
+    match /reports/{id} {
+      allow create: if request.auth != null
+                    && request.resource.data.reportedBy == request.auth.uid;
+      allow read, update, delete: if false;   // admin via console
+    }
+  }
+}
