@@ -43,6 +43,19 @@
     "added": "Ciudades añadidas",
     "remove": "Eliminar {{name}}"
   },
+  "photo": {
+    "label": "Foto de perfil",
+    "choose": "Elige una foto",
+    "change": "Cambiar foto",
+    "remove": "Eliminar foto",
+    "uploading": "Subiendo…",
+    "hint": "JPEG, PNG o WebP, hasta 2 MB.",
+    "previewAlt": "Vista previa de la foto de perfil",
+    "errorType": "Elige una imagen JPEG, PNG o WebP.",
+    "errorSize": "Esa imagen es demasiado grande. Elige una de menos de 2 MB.",
+    "errorUpload": "La subida ha fallado. Inténtalo de nuevo.",
+    "errorNoUser": "Debes iniciar sesión para subir una foto."
+  },
   "report": {
     "button": "Denunciar",
     "title": "Denunciar este perfil",
