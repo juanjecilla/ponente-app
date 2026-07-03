@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_MEASUREMENT_ID: string;
   // App Check (task 17)
   readonly VITE_RECAPTCHA_SITE_KEY?: string;
+  readonly VITE_APPCHECK_DEBUG?: string;
   // Supabase storage (task 07 / ADR 0004)
   readonly VITE_SUPABASE_URL?: string;
   readonly VITE_SUPABASE_ANON_KEY?: string;

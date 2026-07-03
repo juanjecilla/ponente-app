@@ -146,6 +146,22 @@ export async function getPublishedSpeakers(): Promise<Speaker[]> {
   return (await getDocs(q)).docs.map((d) => d.data());
 }
 
+/** A {@link Tag} paired with its Firestore document id (the topic slug). */
+export interface TagWithSlug extends Tag {
+  /** Document id — the stable topic slug stored on `Speaker.topics`. */
+  slug: string;
+}
+
+/**
+ * One-shot fetch of the public `tags` taxonomy. The slug is the document id
+ * (never a field), so it is attached here; callers store slugs, not labels.
+ * Tags change rarely and are refetched on reload (acceptable for MVP).
+ */
+export async function fetchTags(): Promise<TagWithSlug[]> {
+  const snap = await getDocs(tagsCollection);
+  return snap.docs.map((d) => ({ slug: d.id, ...d.data() }));
+}
+
 export async function createTagRequest(
   data: Pick<TagRequest, 'tag' | 'requestedBy'>,
 ): Promise<void> {
