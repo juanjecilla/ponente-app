@@ -11,6 +11,12 @@
   "auth": {
     "loading": "Loading…"
   },
+  "banner": {
+    "title": "Finish your speaker profile",
+    "description": "Your profile isn't published yet. Add the required details so organizers can find you.",
+    "cta": "Complete my profile",
+    "dismiss": "Dismiss this reminder"
+  },
   "login": {
     "title": "Sign in to Ponente",
     "subtitle": "Sign in with Google to create and manage your speaker profile.",

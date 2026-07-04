@@ -11,6 +11,7 @@ import {
   type SpeakerFilterState,
 } from '../lib/filter';
 import { trackSpeakerSearched, type SpeakerFilterType } from '../lib/analytics';
+import { ProfileCompletionBanner } from '../components/shared/ProfileCompletionBanner';
 import { SpeakerFilters } from '../components/directory/SpeakerFilters';
 import { SpeakerGrid } from '../components/directory/SpeakerGrid';
 import { SpeakerList } from '../components/directory/SpeakerList';
@@ -77,6 +78,7 @@ export function HomePage() {
 
   return (
     <main className="mx-auto max-w-6xl p-6">
+      <ProfileCompletionBanner />
       <header className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight text-slate-900">
           {t('directory.title')}
