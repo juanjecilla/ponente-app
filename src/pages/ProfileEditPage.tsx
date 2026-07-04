@@ -1,12 +1,25 @@
-// stub — completed in task 04 (profile form).
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../hooks/useAuth';
+import { ProfileForm } from '../components/profile/ProfileForm';
 
+/**
+ * Speaker profile edit page. Rendered inside a protected route, so a user is
+ * normally present; while auth resolves (or in the unexpected signed-out case)
+ * it shows a loading line rather than rendering the form without an owner uid.
+ */
 export function ProfileEditPage() {
   const { t } = useTranslation();
+  const { user, loading } = useAuth();
 
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">{t('pages.profileEdit')}</h1>
-    </div>
-  );
+  if (loading || user === null) {
+    return (
+      <p aria-live="polite" className="p-8 text-slate-500">
+        {t('auth.loading')}
+      </p>
+    );
+  }
+
+  return <ProfileForm uid={user.uid} />;
 }
+
+export default ProfileEditPage;

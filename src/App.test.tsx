@@ -15,8 +15,8 @@ vi.mock('firebase/auth', () => ({
   GoogleAuthProvider: vi.fn(),
 }));
 vi.mock('./lib/firebase', () => ({ auth: {}, app: {}, db: {} }));
-// The home route now renders the public directory; stub its data access so the
-// tree mounts without touching Firestore.
+// The home route renders the public directory; stub its data access so the tree
+// mounts without touching Firestore.
 vi.mock('./lib/firestore', () => ({
   getPublishedSpeakers: vi.fn(() => Promise.resolve([])),
   getSpeaker: vi.fn(() => Promise.resolve(null)),
@@ -24,6 +24,15 @@ vi.mock('./lib/firestore', () => ({
   createReport: vi.fn(),
   createTagRequest: vi.fn(),
 }));
+// The profile route also pulls firestore.ts collection refs at import; stub
+// collection().withConverter() so any direct firebase/firestore use is safe too.
+vi.mock('firebase/firestore', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('firebase/firestore')>();
+  return {
+    ...actual,
+    collection: vi.fn(() => ({ withConverter: () => ({}) })),
+  };
+});
 
 describe('App', () => {
   it('renders the directory heading at "/"', async () => {

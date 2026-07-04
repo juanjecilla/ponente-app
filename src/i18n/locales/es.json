@@ -143,5 +143,68 @@
       "aspiring": "Aspirante a GDE (autodeclarado)",
       "current": "GDE (autodeclarado, sin verificar)"
     }
+  },
+  "profile": {
+    "title": "Edita tu perfil",
+    "loading": "Cargando tu perfil…",
+    "registrationPaused": "Los nuevos registros están pausados ahora mismo. Vuelve a intentarlo más tarde.",
+    "name": "Nombre",
+    "bio": "Biografía",
+    "bioCount": "{{count}} / {{max}} caracteres",
+    "cities": "Ciudades a las que puedes viajar",
+    "gdgChapter": "Capítulo GDG (opcional)",
+    "languages": "Idiomas (opcional)",
+    "languagesPlaceholder": "p. ej. Inglés, Español",
+    "gdeStatus": "Estado GDE",
+    "gdeStatusNote": "Autodeclarado y sin verificar. Los administradores verifican las insignias GDE por separado.",
+    "gde": {
+      "none": "No soy GDE",
+      "aspiring": "Aspirante a GDE",
+      "current": "GDE actual"
+    },
+    "talkLink": "Enlace a charla o sesión (opcional)",
+    "talkLinkPlaceholder": "https://… (déjalo vacío si aún no tienes)",
+    "save": "Guardar perfil",
+    "saving": "Guardando…",
+    "saved": "Perfil guardado.",
+    "saveError": "No se pudo guardar tu perfil. Inténtalo de nuevo."
+  },
+  "contact": {
+    "legend": "Enlaces de contacto",
+    "empty": "Aún no hay enlaces de contacto. Añade al menos uno para que los organizadores puedan contactarte.",
+    "typeLabel": "Tipo",
+    "valueLabel": "Valor",
+    "add": "Añadir enlace",
+    "remove": "Eliminar",
+    "type": {
+      "email": "Correo electrónico",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter / X",
+      "github": "GitHub",
+      "website": "Sitio web",
+      "sessionize": "Sessionize"
+    },
+    "placeholder": {
+      "email": "tu@ejemplo.com",
+      "linkedin": "https://linkedin.com/in/tu-perfil",
+      "twitter": "https://twitter.com/tu-usuario",
+      "github": "https://github.com/tu-usuario",
+      "website": "https://tu-sitio.com",
+      "sessionize": "https://sessionize.com/tu-perfil"
+    },
+    "error": {
+      "email": "Introduce una dirección de correo válida.",
+      "url": "Introduce una URL válida que empiece por http:// o https://."
+    }
+  },
+  "publish": {
+    "label": "Publicar mi perfil en el directorio",
+    "missingIntro": "Antes de publicar, añade:",
+    "missing": {
+      "name": "tu nombre",
+      "topics": "al menos un tema",
+      "cities": "al menos una ciudad",
+      "contactLinks": "al menos un enlace de contacto válido"
+    }
   }
 }

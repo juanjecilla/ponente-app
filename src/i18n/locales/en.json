@@ -143,5 +143,68 @@
       "aspiring": "Aspiring GDE (self-reported)",
       "current": "GDE (self-reported, unverified)"
     }
+  },
+  "profile": {
+    "title": "Edit your profile",
+    "loading": "Loading your profile…",
+    "registrationPaused": "New registrations are paused right now. Please check back later.",
+    "name": "Name",
+    "bio": "Bio",
+    "bioCount": "{{count}} / {{max}} characters",
+    "cities": "Cities you can travel to",
+    "gdgChapter": "GDG chapter (optional)",
+    "languages": "Languages (optional)",
+    "languagesPlaceholder": "e.g. English, Spanish",
+    "gdeStatus": "GDE status",
+    "gdeStatusNote": "Self-reported and unverified. Admins verify GDE badges separately.",
+    "gde": {
+      "none": "Not a GDE",
+      "aspiring": "Aspiring GDE",
+      "current": "Current GDE"
+    },
+    "talkLink": "Talk or session link (optional)",
+    "talkLinkPlaceholder": "https://… (leave blank if not yet)",
+    "save": "Save profile",
+    "saving": "Saving…",
+    "saved": "Profile saved.",
+    "saveError": "Couldn't save your profile. Please try again."
+  },
+  "contact": {
+    "legend": "Contact links",
+    "empty": "No contact links yet. Add at least one so organizers can reach you.",
+    "typeLabel": "Type",
+    "valueLabel": "Value",
+    "add": "Add link",
+    "remove": "Remove",
+    "type": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter / X",
+      "github": "GitHub",
+      "website": "Website",
+      "sessionize": "Sessionize"
+    },
+    "placeholder": {
+      "email": "you@example.com",
+      "linkedin": "https://linkedin.com/in/your-profile",
+      "twitter": "https://twitter.com/your-handle",
+      "github": "https://github.com/your-handle",
+      "website": "https://your-site.com",
+      "sessionize": "https://sessionize.com/your-profile"
+    },
+    "error": {
+      "email": "Enter a valid email address.",
+      "url": "Enter a valid URL starting with http:// or https://."
+    }
+  },
+  "publish": {
+    "label": "Publish my profile to the directory",
+    "missingIntro": "Before you can publish, please add:",
+    "missing": {
+      "name": "your name",
+      "topics": "at least one topic",
+      "cities": "at least one city",
+      "contactLinks": "at least one valid contact link"
+    }
   }
 }
