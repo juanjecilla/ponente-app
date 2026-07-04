@@ -7,7 +7,10 @@ import type { Timestamp } from 'firebase/firestore';
 import { HomePage } from './HomePage';
 import { useSpeakers } from '../hooks/useSpeakers';
 import { useRemoteConfig } from '../hooks/useRemoteConfig';
-import { trackSpeakerSearched } from '../lib/analytics';
+import {
+  trackExperimentExposure,
+  trackSpeakerSearched,
+} from '../lib/analytics';
 import type { FeatureFlags } from '../lib/remote-config';
 import type { Speaker } from '../types';
 import '../i18n';
@@ -22,7 +25,10 @@ vi.mock('../hooks/useTags', () => ({
     labelFor: (slug: string) => slug.toUpperCase(),
   }),
 }));
-vi.mock('../lib/analytics', () => ({ trackSpeakerSearched: vi.fn() }));
+vi.mock('../lib/analytics', () => ({
+  trackSpeakerSearched: vi.fn(),
+  trackExperimentExposure: vi.fn(),
+}));
 
 const mockedUseSpeakers = vi.mocked(useSpeakers);
 const mockedUseRemoteConfig = vi.mocked(useRemoteConfig);
@@ -70,11 +76,11 @@ function setSpeakers(over: Partial<ReturnType<typeof useSpeakers>> = {}) {
   });
 }
 
-function setFlags(over: Partial<FeatureFlags> = {}) {
+function setFlags(over: Partial<FeatureFlags> = {}, loading = false) {
   mockedUseRemoteConfig.mockReturnValue({
     flags: { ...FLAGS, ...over },
-    loading: false,
-    activated: true,
+    loading,
+    activated: !loading,
   });
 }
 
@@ -164,6 +170,45 @@ describe('HomePage', () => {
       screen.getByText(/directory is currently unavailable/i),
     ).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Ada' })).not.toBeInTheDocument();
+  });
+
+  it('logs the directory_layout exposure once with the served variant', () => {
+    setFlags({ directory_layout: 'list' });
+    const { rerender } = renderHome();
+
+    expect(trackExperimentExposure).toHaveBeenCalledTimes(1);
+    expect(trackExperimentExposure).toHaveBeenCalledWith({
+      experiment: 'directory_layout_test',
+      variant: 'list',
+    });
+
+    // A re-render must not log a second exposure for the same mount.
+    rerender(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+    expect(trackExperimentExposure).toHaveBeenCalledTimes(1);
+  });
+
+  it('logs the grid variant when directory_layout defaults to grid', () => {
+    renderHome();
+    expect(trackExperimentExposure).toHaveBeenCalledWith({
+      experiment: 'directory_layout_test',
+      variant: 'grid',
+    });
+  });
+
+  it('defers exposure logging until Remote Config settles', () => {
+    setFlags({ directory_layout: 'list' }, true);
+    renderHome();
+    expect(trackExperimentExposure).not.toHaveBeenCalled();
+  });
+
+  it('does not log exposure when the directory is disabled', () => {
+    setFlags({ enable_public_directory: false });
+    renderHome();
+    expect(trackExperimentExposure).not.toHaveBeenCalled();
   });
 
   it('has no accessibility violations', async () => {

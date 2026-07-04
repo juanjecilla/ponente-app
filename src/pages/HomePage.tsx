@@ -10,13 +10,20 @@ import {
   filterSpeakers,
   type SpeakerFilterState,
 } from '../lib/filter';
-import { trackSpeakerSearched, type SpeakerFilterType } from '../lib/analytics';
+import {
+  trackExperimentExposure,
+  trackSpeakerSearched,
+  type SpeakerFilterType,
+} from '../lib/analytics';
 import { SpeakerFilters } from '../components/directory/SpeakerFilters';
 import { SpeakerGrid } from '../components/directory/SpeakerGrid';
 import { SpeakerList } from '../components/directory/SpeakerList';
 
 /** Debounce window for the `speaker_searched` analytics event (ms). */
 const SEARCH_DEBOUNCE_MS = 600;
+
+/** Remote Config A/B experiment id for the grid-vs-list layout test (task 18). */
+const DIRECTORY_LAYOUT_EXPERIMENT = 'directory_layout_test';
 
 /**
  * Public speaker directory (`/`). Fetches every published speaker once, filters
@@ -27,12 +34,13 @@ const SEARCH_DEBOUNCE_MS = 600;
  */
 export function HomePage() {
   const { t, i18n } = useTranslation();
-  const { flags } = useRemoteConfig();
+  const { flags, loading: configLoading } = useRemoteConfig();
   const { speakers, loading, error, reload } = useSpeakers();
   const { labelFor } = useTags();
 
   const [filter, setFilter] = useState<SpeakerFilterState>(EMPTY_FILTER);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const exposureLoggedRef = useRef(false);
 
   const topicLabel = useCallback(
     (slug: string) => labelFor(slug, i18n.language),
@@ -52,6 +60,20 @@ export function HomePage() {
     },
     [],
   );
+
+  // Log the directory_layout A/B variant once the Remote Config fetch settles,
+  // exactly once per mount, so grid vs list can be compared against the
+  // `speaker_profile_viewed` goal metric. Gated on the directory being enabled
+  // (a hidden directory never renders a layout, so exposure is meaningless).
+  useEffect(() => {
+    if (configLoading || exposureLoggedRef.current) return;
+    if (!flags.enable_public_directory) return;
+    exposureLoggedRef.current = true;
+    trackExperimentExposure({
+      experiment: DIRECTORY_LAYOUT_EXPERIMENT,
+      variant: flags.directory_layout,
+    });
+  }, [configLoading, flags.enable_public_directory, flags.directory_layout]);
 
   const handleFilterChange = useCallback(
     (next: SpeakerFilterState, facet: SpeakerFilterType) => {

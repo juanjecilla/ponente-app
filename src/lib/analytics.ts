@@ -56,6 +56,13 @@ export interface AnalyticsEventParams {
   speaker_reported: { reason: ReportReason };
   /** The UI locale was switched (task 10). */
   locale_changed: { locale: AppLocale };
+  /**
+   * A user was exposed to an A/B experiment variant — logged once per session
+   * so grid vs list can be compared against the `speaker_profile_viewed` goal
+   * metric (task 18). `experiment` is the Remote Config experiment id, `variant`
+   * the resolved parameter value the user was served.
+   */
+  experiment_exposure: { experiment: string; variant: string };
 }
 
 /** Every valid Analytics event name. */
@@ -128,3 +135,8 @@ export const trackSpeakerReported = (
 export const trackLocaleChanged = (
   params: AnalyticsEventParams['locale_changed'],
 ): void => emit('locale_changed', params);
+
+/** Fired once per session when a user is exposed to an A/B experiment variant. */
+export const trackExperimentExposure = (
+  params: AnalyticsEventParams['experiment_exposure'],
+): void => emit('experiment_exposure', params);
