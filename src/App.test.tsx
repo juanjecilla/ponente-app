@@ -14,19 +14,28 @@ vi.mock('firebase/auth', () => ({
   signOut: vi.fn(() => Promise.resolve()),
   GoogleAuthProvider: vi.fn(),
 }));
-vi.mock('./lib/firebase', () => ({ auth: {} }));
+vi.mock('./lib/firebase', () => ({ auth: {}, app: {}, db: {} }));
+// The home route now renders the public directory; stub its data access so the
+// tree mounts without touching Firestore.
+vi.mock('./lib/firestore', () => ({
+  getPublishedSpeakers: vi.fn(() => Promise.resolve([])),
+  getSpeaker: vi.fn(() => Promise.resolve(null)),
+  fetchTags: vi.fn(() => Promise.resolve([])),
+  createReport: vi.fn(),
+  createTagRequest: vi.fn(),
+}));
 
 describe('App', () => {
-  it('renders the home page hero at "/"', () => {
+  it('renders the directory heading at "/"', async () => {
     render(<App />);
     expect(
-      screen.getByRole('heading', { name: /ponente/i }),
+      await screen.findByRole('heading', { name: /speaker directory/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/travel to your city/i)).toBeInTheDocument();
   });
 
   it('has no accessibility violations', async () => {
     const { container } = render(<App />);
+    await screen.findByRole('heading', { name: /speaker directory/i });
     expect(await axe(container)).toHaveNoViolations();
   });
 });

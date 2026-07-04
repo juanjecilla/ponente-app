@@ -87,5 +87,61 @@
     "requestSignedOut": "Inicia sesión para solicitar un tema nuevo.",
     "requestSubmitted": "Enviado para revisión. ¡Gracias!",
     "requestError": "No se pudo enviar tu solicitud. Inténtalo de nuevo."
+  },
+  "directory": {
+    "title": "Directorio de ponentes",
+    "subtitle": "Explora ponentes que pueden viajar a tu ciudad y ponte en contacto.",
+    "loading": "Cargando ponentes…",
+    "error": "No se pudo cargar el directorio. Inténtalo de nuevo.",
+    "retry": "Reintentar",
+    "empty": "Todavía no hay ponentes con perfil publicado. Vuelve pronto.",
+    "emptyFilters": "Ningún ponente coincide con estos filtros. Prueba a ajustarlos.",
+    "disabled": "El directorio público no está disponible en este momento.",
+    "resultCount_one": "{{count}} ponente",
+    "resultCount_other": "{{count}} ponentes",
+    "topics": "Temas",
+    "cities": "Ciudades disponibles",
+    "contact": "Enlaces de contacto",
+    "filters": {
+      "title": "Filtros",
+      "city": "Ciudad",
+      "topic": "Tema",
+      "tier": "Nivel de gastos",
+      "clear": "Borrar filtros"
+    },
+    "tier": {
+      "free": "Gratis",
+      "self-covered": "Cubierto por mí",
+      "needs-expenses": "Necesita gastos"
+    },
+    "gde": {
+      "verified": "GDE"
+    },
+    "contactType": {
+      "email": "Correo",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "website": "Sitio web",
+      "sessionize": "Sessionize"
+    }
+  },
+  "speaker": {
+    "loading": "Cargando perfil…",
+    "notFoundTitle": "Ponente no disponible",
+    "notFoundMessage": "Este perfil no existe o ya no está publicado.",
+    "backToDirectory": "Volver al directorio",
+    "bio": "Sobre mí",
+    "topics": "Temas",
+    "cities": "Ciudades disponibles",
+    "languages": "Idiomas",
+    "gdgChapter": "Capítulo GDG",
+    "contact": "Contacto",
+    "talkLink": "Charlas",
+    "talkLinkView": "Ver charlas",
+    "gde": {
+      "aspiring": "Aspirante a GDE (autodeclarado)",
+      "current": "GDE (autodeclarado, sin verificar)"
+    }
   }
 }
