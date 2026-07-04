@@ -14,7 +14,17 @@ vi.mock('firebase/auth', () => ({
   signOut: vi.fn(() => Promise.resolve()),
   GoogleAuthProvider: vi.fn(),
 }));
-vi.mock('./lib/firebase', () => ({ auth: {} }));
+// The profile route now pulls in firestore.ts, which builds typed collection
+// refs at import. Provide a `db` and a `collection().withConverter()` stub so
+// those module-level refs construct without a real Firestore.
+vi.mock('./lib/firebase', () => ({ auth: {}, db: {}, app: {} }));
+vi.mock('firebase/firestore', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('firebase/firestore')>();
+  return {
+    ...actual,
+    collection: vi.fn(() => ({ withConverter: () => ({}) })),
+  };
+});
 
 describe('App', () => {
   it('renders the home page hero at "/"', () => {
