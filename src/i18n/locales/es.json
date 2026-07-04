@@ -17,6 +17,12 @@
   "auth": {
     "loading": "Cargando…"
   },
+  "banner": {
+    "title": "Termina tu perfil de ponente",
+    "description": "Tu perfil aún no está publicado. Añade los datos obligatorios para que los organizadores puedan encontrarte.",
+    "cta": "Completar mi perfil",
+    "dismiss": "Descartar este aviso"
+  },
   "login": {
     "title": "Inicia sesión en Ponente",
     "subtitle": "Inicia sesión con Google para crear y gestionar tu perfil de ponente.",

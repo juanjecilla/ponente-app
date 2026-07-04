@@ -7,6 +7,7 @@ import type { Timestamp } from 'firebase/firestore';
 import { HomePage } from './HomePage';
 import { useSpeakers } from '../hooks/useSpeakers';
 import { useRemoteConfig } from '../hooks/useRemoteConfig';
+import { useAuth } from '../hooks/useAuth';
 import {
   trackExperimentExposure,
   trackSpeakerSearched,
@@ -17,6 +18,11 @@ import '../i18n';
 
 vi.mock('../hooks/useSpeakers', () => ({ useSpeakers: vi.fn() }));
 vi.mock('../hooks/useRemoteConfig', () => ({ useRemoteConfig: vi.fn() }));
+// The ProfileCompletionBanner rendered at the top of the page pulls in auth +
+// Firestore; stub both so it renders nothing (signed out) and never touches
+// real Firebase during directory tests.
+vi.mock('../hooks/useAuth', () => ({ useAuth: vi.fn() }));
+vi.mock('../lib/firestore', () => ({ getSpeaker: vi.fn() }));
 vi.mock('../hooks/useTags', () => ({
   useTags: () => ({
     tags: [],
@@ -32,6 +38,7 @@ vi.mock('../lib/analytics', () => ({
 
 const mockedUseSpeakers = vi.mocked(useSpeakers);
 const mockedUseRemoteConfig = vi.mocked(useRemoteConfig);
+const mockedUseAuth = vi.mocked(useAuth);
 
 const FLAGS: FeatureFlags = {
   enable_speaker_registration: true,
@@ -96,6 +103,14 @@ beforeEach(() => {
   vi.clearAllMocks();
   setSpeakers();
   setFlags();
+  // Signed out: the completion banner renders nothing, so it stays out of the
+  // way of the directory assertions below.
+  mockedUseAuth.mockReturnValue({
+    user: null,
+    loading: false,
+    signInWithGoogle: vi.fn(),
+    signOut: vi.fn(),
+  });
 });
 
 describe('HomePage', () => {
