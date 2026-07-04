@@ -42,6 +42,17 @@ describe('App', () => {
     ).toBeInTheDocument();
   });
 
+  it('renders the shared header with the language switcher on every page', async () => {
+    render(<App />);
+    await screen.findByRole('heading', { name: /speaker directory/i });
+    expect(
+      screen.getByRole('link', { name: /ponente home/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('group', { name: /language/i }),
+    ).toBeInTheDocument();
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(<App />);
     await screen.findByRole('heading', { name: /speaker directory/i });

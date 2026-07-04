@@ -6,7 +6,13 @@
   "nav": {
     "directory": "Directorio",
     "login": "Iniciar sesión",
-    "editProfile": "Editar perfil"
+    "editProfile": "Editar perfil",
+    "home": "Inicio de Ponente"
+  },
+  "language": {
+    "label": "Idioma",
+    "english": "English",
+    "spanish": "Español"
   },
   "auth": {
     "loading": "Cargando…"
