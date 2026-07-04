@@ -9,6 +9,7 @@ Comprehensive context for AI agents implementing Ponente. **Read in this order**
 4. `FIREBASE.md` — Firebase services map, rules rationale, flags, App Check, A/B, why no In-App Messaging.
 5. `TESTING.md` — test strategy, coverage thresholds, a11y, Lighthouse.
 6. `adr/` — the *why* behind the load-bearing decisions (0001–0006).
+7. `DEPLOYMENT.md` — CI deploy flow, required secrets/vars, preview channels, Firestore rules/indexes, cache headers.
 
 ## Project Overview
 
