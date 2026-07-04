@@ -6,7 +6,13 @@
   "nav": {
     "directory": "Directory",
     "login": "Sign in",
-    "editProfile": "Edit profile"
+    "editProfile": "Edit profile",
+    "home": "Ponente home"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "spanish": "Español"
   },
   "auth": {
     "loading": "Loading…"

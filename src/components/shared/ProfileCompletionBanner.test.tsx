@@ -20,7 +20,7 @@ const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseRemoteConfig = vi.mocked(useRemoteConfig);
 const mockedGetSpeaker = vi.mocked(getSpeaker);
 
-const FLAGS: FeatureFlags = {
+const FLAG_DEFAULTS: FeatureFlags = {
   enable_speaker_registration: true,
   enable_photo_upload: true,
   enable_city_autocomplete: true,
