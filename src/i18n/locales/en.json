@@ -88,6 +88,62 @@
     "requestSubmitted": "Submitted for review — thanks!",
     "requestError": "Couldn't submit your request. Please try again."
   },
+  "directory": {
+    "title": "Speaker directory",
+    "subtitle": "Browse speakers who can travel to your city and get in touch.",
+    "loading": "Loading speakers…",
+    "error": "Couldn't load the directory. Please try again.",
+    "retry": "Retry",
+    "empty": "No speakers have published a profile yet. Check back soon.",
+    "emptyFilters": "No speakers match these filters. Try adjusting them.",
+    "disabled": "The public directory is currently unavailable.",
+    "resultCount_one": "{{count}} speaker",
+    "resultCount_other": "{{count}} speakers",
+    "topics": "Topics",
+    "cities": "Available cities",
+    "contact": "Contact links",
+    "filters": {
+      "title": "Filters",
+      "city": "City",
+      "topic": "Topic",
+      "tier": "Cost tier",
+      "clear": "Clear filters"
+    },
+    "tier": {
+      "free": "Free",
+      "self-covered": "Self-covered",
+      "needs-expenses": "Needs expenses"
+    },
+    "gde": {
+      "verified": "GDE"
+    },
+    "contactType": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "website": "Website",
+      "sessionize": "Sessionize"
+    }
+  },
+  "speaker": {
+    "loading": "Loading profile…",
+    "notFoundTitle": "Speaker not available",
+    "notFoundMessage": "This profile doesn't exist or is no longer published.",
+    "backToDirectory": "Back to directory",
+    "bio": "About",
+    "topics": "Topics",
+    "cities": "Available cities",
+    "languages": "Languages",
+    "gdgChapter": "GDG chapter",
+    "contact": "Contact",
+    "talkLink": "Talks",
+    "talkLinkView": "View talks",
+    "gde": {
+      "aspiring": "Aspiring GDE (self-reported)",
+      "current": "GDE (self-reported, unverified)"
+    }
+  },
   "profile": {
     "title": "Edit your profile",
     "loading": "Loading your profile…",

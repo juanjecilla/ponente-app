@@ -14,10 +14,18 @@ vi.mock('firebase/auth', () => ({
   signOut: vi.fn(() => Promise.resolve()),
   GoogleAuthProvider: vi.fn(),
 }));
-// The profile route now pulls in firestore.ts, which builds typed collection
-// refs at import. Provide a `db` and a `collection().withConverter()` stub so
-// those module-level refs construct without a real Firestore.
-vi.mock('./lib/firebase', () => ({ auth: {}, db: {}, app: {} }));
+vi.mock('./lib/firebase', () => ({ auth: {}, app: {}, db: {} }));
+// The home route renders the public directory; stub its data access so the tree
+// mounts without touching Firestore.
+vi.mock('./lib/firestore', () => ({
+  getPublishedSpeakers: vi.fn(() => Promise.resolve([])),
+  getSpeaker: vi.fn(() => Promise.resolve(null)),
+  fetchTags: vi.fn(() => Promise.resolve([])),
+  createReport: vi.fn(),
+  createTagRequest: vi.fn(),
+}));
+// The profile route also pulls firestore.ts collection refs at import; stub
+// collection().withConverter() so any direct firebase/firestore use is safe too.
 vi.mock('firebase/firestore', async (importOriginal) => {
   const actual = await importOriginal<typeof import('firebase/firestore')>();
   return {
@@ -27,16 +35,16 @@ vi.mock('firebase/firestore', async (importOriginal) => {
 });
 
 describe('App', () => {
-  it('renders the home page hero at "/"', () => {
+  it('renders the directory heading at "/"', async () => {
     render(<App />);
     expect(
-      screen.getByRole('heading', { name: /ponente/i }),
+      await screen.findByRole('heading', { name: /speaker directory/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/travel to your city/i)).toBeInTheDocument();
   });
 
   it('has no accessibility violations', async () => {
     const { container } = render(<App />);
+    await screen.findByRole('heading', { name: /speaker directory/i });
     expect(await axe(container)).toHaveNoViolations();
   });
 });
